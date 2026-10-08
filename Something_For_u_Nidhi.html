@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A little surprise for Nidhi ❤️">
+<meta name="theme-color" content="#fff0f5">
+<title>Nidhi ❤️ A Little Question</title>
+<style>
+:root{
+  --rose:#ff4f87; --deep:#9d174d; --pink:#fff0f5; --cream:#fffaf8;
+  --ink:#351c2b; --muted:#876b79; --card:rgba(255,255,255,.82);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}
+body{
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(255,129,171,.25),transparent 30%),
+    radial-gradient(circle at 85% 20%,rgba(255,207,225,.55),transparent 32%),
+    linear-gradient(145deg,#fff7fa,#ffe9f1 55%,#fffaf8);
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:0}
+#app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px}
+.card{
+  width:min(720px,100%); min-height:650px; position:relative; overflow:hidden;
+  background:var(--card); backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.9); border-radius:32px;
+  box-shadow:0 30px 90px rgba(112,30,70,.16); padding:34px 26px 30px;
+}
+.top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;margin-bottom:18px}
+.progress{height:5px;background:#f5dce6;border-radius:99px;overflow:hidden}
+.progress span{display:block;height:100%;width:12.5%;background:linear-gradient(90deg,#ff6b9b,#d62967);border-radius:99px;transition:.5s}
+.screen{display:none;animation:enter .55s ease both}
+.screen.active{display:block}
+@keyframes enter{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+.emoji{font-size:58px;text-align:center;margin:15px 0 6px;filter:drop-shadow(0 10px 15px rgba(255,79,135,.18))}
+h1{text-align:center;font-family:Georgia,serif;font-size:clamp(31px,7vw,52px);line-height:1.05;margin:8px 0 14px;color:#7d1748}
+h2{text-align:center;font-family:Georgia,serif;font-size:clamp(27px,6vw,42px);line-height:1.1;margin:10px 0 12px;color:#7d1748}
+p{text-align:center;line-height:1.7;color:var(--muted);max-width:570px;margin:10px auto}
+.small{text-align:center;color:#a18491;font-size:13px;margin-top:15px}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:28px auto 8px}
+.btn{
+  min-width:150px;padding:14px 22px;border-radius:999px;font-weight:800;
+  transition:transform .2s,box-shadow .2s,filter .2s;
+}
+.btn:hover{transform:translateY(-2px)}
+.primary{color:white;background:linear-gradient(135deg,#ff5a91,#d92d68);box-shadow:0 12px 25px rgba(217,45,104,.25)}
+.secondary{background:white;color:#8c4665;box-shadow:0 8px 22px rgba(100,30,60,.08)}
+.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin:25px auto;max-width:590px}
+.choice{
+  background:white;border:2px solid transparent;border-radius:22px;padding:19px 15px;
+  text-align:center;box-shadow:0 8px 24px rgba(100,30,60,.07);transition:.2s
+}
+.choice:hover{transform:translateY(-3px)}
+.choice.selected{border-color:var(--rose);background:#fff4f8;box-shadow:0 10px 28px rgba(255,79,135,.15)}
+.choice .big{font-size:30px;display:block;margin-bottom:6px}.choice strong{font-size:15px}
+.field{max-width:520px;margin:18px auto}.field label{display:block;font-size:13px;font-weight:800;color:#795267;margin:0 0 7px}
+input,textarea,select{width:100%;border:1px solid #edd4df;background:rgba(255,255,255,.9);border-radius:15px;padding:13px 14px;outline:none;color:var(--ink)}
+input:focus,textarea:focus,select:focus{border-color:#ff6b9b;box-shadow:0 0 0 4px rgba(255,107,155,.1)}
+textarea{min-height:82px;resize:vertical}
+.love-note{max-width:510px;margin:22px auto;padding:17px 19px;border-radius:20px;background:#fff7fa;border:1px dashed #f4aac5;text-align:center;color:#8b4965}
+.envelope{width:130px;height:90px;margin:24px auto 18px;position:relative;background:#ff719f;border-radius:12px;box-shadow:0 15px 30px rgba(255,79,135,.25)}
+.envelope:before{content:"";position:absolute;left:0;right:0;top:0;margin:auto;border-left:65px solid transparent;border-right:65px solid transparent;border-top:49px solid #ffadc5}
+.envelope:after{content:"♥";position:absolute;left:0;right:0;top:31px;text-align:center;color:white;font-size:24px}
+#noBtn{position:relative}
+.final{padding-top:30px}
+.final .heart{font-size:92px;text-align:center;animation:pulse 1.2s infinite}
+@keyframes pulse{50%{transform:scale(1.1)}}
+.summary{max-width:520px;margin:20px auto;background:white;border-radius:22px;padding:18px 20px;box-shadow:0 10px 30px rgba(100,30,60,.08)}
+.row{display:flex;justify-content:space-between;gap:15px;padding:9px 0;border-bottom:1px solid #f5e4eb}.row:last-child{border:0}.row span:first-child{color:#987083}.row span:last-child{font-weight:800;text-align:right}
+.heart-float{position:fixed;pointer-events:none;animation:floatUp 4s linear forwards;z-index:10}
+@keyframes floatUp{0%{transform:translateY(0) scale(.7);opacity:0}15%{opacity:.9}100%{transform:translateY(-100vh) translateX(var(--drift)) scale(1.3);opacity:0}}
+.confetti{position:fixed;width:9px;height:14px;top:-20px;z-index:20;animation:fall 3.4s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(760deg);opacity:.2}}
+@media(max-width:520px){
+ .card{min-height:calc(100vh - 30px);border-radius:26px;padding:24px 18px}
+ .choice-grid{grid-template-columns:1fr 1fr}
+ .btn{min-width:135px}
+ #s4 .actions{min-height:190px;display:block;position:relative;max-width:340px}
+ #s4 .actions .primary{position:absolute;left:50%;top:18px;transform:translateX(-50%);z-index:2;width:180px}
+ #s4 #noBtn{position:absolute;left:50%;top:105px;transform:translateX(-50%);z-index:3;width:150px}
+ #s4 .small{margin-top:4px}
+}
+
+html{height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{min-height:100%;min-height:100dvh;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+button,.choice{touch-action:manipulation;-webkit-user-select:none;user-select:none}
+#app{min-height:100vh;min-height:100dvh;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+.card{min-height:min(760px,calc(100dvh - 32px))}
+.celebrate{animation:celebrateGlow 1.15s ease both}
+@keyframes celebrateGlow{0%{transform:scale(.96);box-shadow:0 0 0 rgba(255,79,135,0)}35%{transform:scale(1.015);box-shadow:0 0 70px rgba(255,79,135,.42)}100%{transform:scale(1);box-shadow:0 30px 90px rgba(112,30,70,.16)}}
+.yes-blast{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden;background:radial-gradient(circle at center,rgba(255,255,255,.98) 0%,rgba(255,228,238,.92) 18%,rgba(255,228,238,0) 58%);animation:blastFade 1.35s ease forwards}
+@keyframes blastFade{0%{opacity:0}18%{opacity:1}58%{opacity:.96}100%{opacity:0}}
+.blast-heart{position:absolute;left:50%;top:50%;font-size:clamp(25px,8vw,70px);transform:translate(-50%,-50%);animation:blastHeart 1.25s cubic-bezier(.15,.75,.2,1) forwards}
+@keyframes blastHeart{0%{transform:translate(-50%,-50%) scale(.15);opacity:0}12%{opacity:1}100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.2) rotate(var(--r));opacity:0}}
+@media(max-width:520px){
+ .card{min-height:calc(100dvh - 32px);padding:24px 18px max(28px,env(safe-area-inset-bottom))}
+ h1{font-size:clamp(32px,10vw,48px)} h2{font-size:clamp(27px,8vw,39px)}
+ p{font-size:15px}.btn{min-height:52px;padding:14px 18px}.choice{min-height:92px}
+ #s4 .actions{min-height:245px}
+ #s4 #noBtn{top:16px;width:155px;min-height:52px}
+ #s4 #yesBtn{top:142px;width:190px;min-height:56px}
+}
+
+
+/* Windows Chrome desktop optimization */
+html,body{min-width:320px}
+body{cursor:default}
+button{cursor:pointer}
+@media(min-width:700px){
+  #app{min-height:100vh;padding:32px}
+  .card{width:min(760px,92vw);min-height:690px;padding:38px 42px}
+  .choice-grid{grid-template-columns:repeat(3,1fr);max-width:650px}
+  #s4 .actions{min-height:230px;max-width:560px}
+  #s4 #noBtn{position:absolute;left:50%;top:22px;transform:translateX(-50%);z-index:3}
+  #s4 #yesBtn{position:absolute;left:50%;top:142px;transform:translateX(-50%);z-index:2}
+}
+
+</style>
+</head>
+<body>
+<div id="app">
+<div class="card">
+  <div class="top"><span id="stepLabel">A tiny adventure</span><span id="stepCount">1 / 8</span></div>
+  <div class="progress"><span id="bar"></span></div>
+
+  <section class="screen active" id="s1">
+    <div class="envelope"></div>
+    <h1>Hey Nidhi… ❤️</h1>
+    <p>I have a tiny little adventure planned for you.</p>
+    <p>But before I ask the important question, you have to survive a few questions. 😌</p>
+    <div class="actions"><button class="btn primary" onclick="go(2)">Open it 💌</button></div>
+  </section>
+
+  <section class="screen" id="s2">
+    <div class="emoji">👀</div>
+    <h2>Let's start easy…</h2>
+    <p>Do you enjoy spending time with me?</p>
+    <div class="actions">
+      <button class="btn primary" onclick="go(3)">Obviously ❤️</button>
+      <button class="btn secondary" onclick="go(3)">I suppose 🙈</button>
+    </div>
+  </section>
+
+  <section class="screen" id="s3">
+    <div class="emoji">🤭</div>
+    <h2>Okay… one more.</h2>
+    <p>Would you allow me to steal a few hours of your time?</p>
+    <div class="actions">
+      <button class="btn primary" onclick="go(4)">Yes, steal it 💕</button>
+      <button class="btn secondary" onclick="go(4)">Maybe… 😏</button>
+    </div>
+  </section>
+
+  <section class="screen" id="s4">
+    <div class="emoji">🥹❤️</div>
+    <h2>Nidhi, will you go on a date with me?</h2>
+    <p>There is only one correct answer. Just saying. 😌</p>
+    <div class="actions" id="proposalActions" style="min-height:220px;position:relative">
+      <button class="btn secondary" id="noBtn" onpointerdown="escapeNo(event)">NO 🙈</button>
+      <button class="btn primary" id="yesBtn" onclick="yesBlast(5)">YES ❤️</button>
+    </div>
+    <div class="small" id="noHint">Go ahead… try NO. 😌</div>
+  </section>
+
+  <section class="screen" id="s5">
+    <div class="emoji">🎉</div>
+    <h2>I KNEW IT! ❤️</h2>
+    <p>Excellent decision, Nidhi. Now let's build our perfect date.</p>
+    <p><strong>What kind of date sounds best?</strong></p>
+    <div class="choice-grid">
+      <button class="choice" data-group="plan" data-value="☕ Cute café date" onclick="pick(this)"><span class="big">☕</span><strong>Cute café</strong></button>
+      <button class="choice" data-group="plan" data-value="🍝 Romantic dinner" onclick="pick(this)"><span class="big">🍝</span><strong>Romantic dinner</strong></button>
+      <button class="choice" data-group="plan" data-value="🎬 Movie + dinner" onclick="pick(this)"><span class="big">🎬</span><strong>Movie + dinner</strong></button>
+      <button class="choice" data-group="plan" data-value="🌃 Long drive + dinner" onclick="pick(this)"><span class="big">🌃</span><strong>Long drive</strong></button>
+      <button class="choice" data-group="plan" data-value="✨ Surprise date" onclick="pick(this)"><span class="big">✨</span><strong>Surprise me</strong></button>
+      <button class="choice" data-group="plan" data-value="💗 You decide" onclick="pick(this)"><span class="big">💗</span><strong>You decide</strong></button>
+    </div>
+    <div class="actions"><button class="btn primary" onclick="nextWith('plan',6)">Next →</button></div>
+  </section>
+
+  <section class="screen" id="s6">
+    <div class="emoji">📅</div>
+    <h2>When should I save my day for you?</h2>
+    <p>Pick the date and a preferred time. I'll take care of the rest. ❤️</p>
+    <div class="field"><label>Our date</label><input type="date" id="date"></div>
+    <div class="field"><label>Preferred time</label><input type="time" id="time"></div>
+    <div class="actions"><button class="btn primary" onclick="nextDate()">Save the plan →</button></div>
+  </section>
+
+  <section class="screen" id="s7">
+    <div class="emoji">🎁</div>
+    <h2>One VERY important question…</h2>
+    <p>What should I bring for my favourite person?</p>
+    <div class="choice-grid">
+      <button class="choice" data-group="gift" data-value="🌹 Flowers" onclick="pick(this)"><span class="big">🌹</span><strong>Flowers</strong></button>
+      <button class="choice" data-group="gift" data-value="🍫 Chocolates" onclick="pick(this)"><span class="big">🍫</span><strong>Chocolates</strong></button>
+      <button class="choice" data-group="gift" data-value="🧸 Something cute" onclick="pick(this)"><span class="big">🧸</span><strong>Something cute</strong></button>
+      <button class="choice" data-group="gift" data-value="💎 Something special" onclick="pick(this)"><span class="big">💎</span><strong>Something special</strong></button>
+      <button class="choice" data-group="gift" data-value="😏 Surprise me" onclick="pick(this)"><span class="big">😏</span><strong>Surprise me</strong></button>
+      <button class="choice" data-group="gift" data-value="❤️ Just bring yourself" onclick="pick(this)"><span class="big">❤️</span><strong>Just me</strong></button>
+    </div>
+    <div class="field"><label>Anything else I should know?</label><textarea id="note" placeholder="Your little request…"></textarea></div>
+    <div class="actions"><button class="btn primary" onclick="finish()">Reveal our date 💌</button></div>
+  </section>
+
+  <section class="screen final" id="s8">
+    <div class="heart">💗</div>
+    <h1>IT'S A DATE, NIDHI!</h1>
+    <p>You officially said yes. My favourite notification is now pending. 😌❤️</p>
+    <div class="summary">
+      <div class="row"><span>Our plan</span><span id="sumPlan">—</span></div>
+      <div class="row"><span>Date</span><span id="sumDate">—</span></div>
+      <div class="row"><span>Time</span><span id="sumTime">—</span></div>
+      <div class="row"><span>Gift</span><span id="sumGift">—</span></div>
+    </div>
+    <div class="love-note" id="sumNote">Now all that's left is for you to show up and look cute. ❤️</div>
+    <div class="actions">
+      <button class="btn primary" onclick="sendWhatsApp()">Send on WhatsApp 💚</button>
+      <button class="btn secondary" onclick="sendEmail()">Send my answer by Email ✉️</button>
+    </div>
+    <p class="small">Choose how you want to send your answer. 💌</p>
+  </section>
+</div>
+</div>
+
+<script>
+const state={plan:"",date:"",time:"",gift:"",note:""};
+let current=1;
+const labels=["A tiny adventure","Warm-up question","One more question","The big question","Date style","Pick the day","The important gift","It's a date!"];
+function go(n){
+  document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+  document.getElementById("s"+n).classList.add("active");
+  current=n;
+  document.getElementById("stepLabel").textContent=labels[n-1];
+  document.getElementById("stepCount").textContent=n+" / 8";
+  document.getElementById("bar").style.width=(n/8*100)+"%";
+  burst(4);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function pick(el){
+  const g=el.dataset.group;
+  document.querySelectorAll(`[data-group="${g}"]`).forEach(x=>x.classList.remove("selected"));
+  el.classList.add("selected");
+  state[g]=el.dataset.value;
+}
+function nextWith(g,n){
+  if(!state[g]){alert("Pick one — I need to know what kind of date we're having. ❤️");return}
+  go(n);
+}
+function nextDate(){
+  const d=document.getElementById("date").value,t=document.getElementById("time").value;
+  if(!d||!t){alert("Pick a date and time first. ❤️");return}
+  state.date=d;state.time=t;go(7);
+}
+function finish(){
+  if(!state.gift){alert("You forgot the most important part — the gift. 🎁");return}
+  state.note=document.getElementById("note").value.trim();
+  document.getElementById("sumPlan").textContent=state.plan;
+  const dt=new Date(state.date+"T00:00:00");
+  document.getElementById("sumDate").textContent=dt.toLocaleDateString(undefined,{day:"numeric",month:"long",year:"numeric"});
+  document.getElementById("sumTime").textContent=formatTime(state.time);
+  document.getElementById("sumGift").textContent=state.gift;
+  document.getElementById("sumNote").textContent=state.note||"Now all that's left is for you to show up and look cute. ❤️";
+  go(8);confetti(90);burst(18);
+}
+function formatTime(t){let [h,m]=t.split(":").map(Number);let ap=h>=12?"PM":"AM";h=h%12||12;return `${h}:${String(m).padStart(2,"0")} ${ap}`}
+let noTries=0,lastNoMove=0;
+function escapeNo(event){
+  if(event) event.preventDefault();
+  const now=Date.now(); if(now-lastNoMove<220)return; lastNoMove=now;
+  noTries++;
+
+  const b=document.getElementById("noBtn");
+  const yes=document.getElementById("yesBtn");
+  const hint=document.getElementById("noHint");
+
+  const messages=[
+    "Nice try, Nidhi… 😌",
+    "Hehe… not that easy. 🙈",
+    "You almost caught it! 👀",
+    "Why are we avoiding YES? ❤️",
+    "The NO button is getting nervous now. 😏",
+    "Okay… I'll give you a little hint. 👇❤️",
+    "There it is… YES is waiting for you. 🥹❤️"
+  ];
+
+  const mobile=window.innerWidth<=520;
+
+  // Keep NO in the upper half of the dedicated area.
+  // YES always remains clearly separated below it.
+  const positions=mobile ? [
+    {x:-72,y:16},{x:72,y:16},{x:-88,y:58},
+    {x:88,y:58},{x:-65,y:28},{x:65,y:28},{x:0,y:68}
+  ] : [
+    {x:-120,y:22},{x:120,y:22},{x:-150,y:70},
+    {x:150,y:70},{x:-110,y:38},{x:110,y:38},{x:0,y:82}
+  ];
+
+  const p=positions[Math.min(noTries-1,positions.length-1)];
+  b.style.position="absolute";
+  b.style.left=`calc(50% + ${p.x}px)`;
+  b.style.top=`${p.y}px`;
+  b.style.transform=`translateX(-50%) rotate(${Math.random()*8-4}deg)`;
+
+  hint.textContent=messages[Math.min(noTries-1,messages.length-1)];
+
+  if(noTries===3){
+    yes.textContent="YES ❤️";
+    yes.animate(
+      [{transform:"translateX(-50%) scale(1)"},{transform:"translateX(-50%) scale(1.07)"},{transform:"translateX(-50%) scale(1)"}],
+      {duration:700,iterations:2}
+    );
+  }
+  if(noTries===5){
+    hint.innerHTML="You're really trying to say NO? <strong>That's adorable.</strong> 😏";
+  }
+  if(noTries>=7){
+    hint.innerHTML="Okay… I'll stop running. <strong>YES is right below me. ❤️</strong>";
+  }
+}
+
+function yesBlast(nextScreen=5){
+  const overlay=document.createElement("div");overlay.className="yes-blast";
+  for(let i=0;i<28;i++){const h=document.createElement("div");h.className="blast-heart";h.textContent=["❤️","💕","💗","💖","✨","🥰"][Math.floor(Math.random()*6)];const a=Math.random()*Math.PI*2,r=140+Math.random()*Math.max(innerWidth,innerHeight)*.65;h.style.setProperty("--x",Math.cos(a)*r+"px");h.style.setProperty("--y",Math.sin(a)*r+"px");h.style.setProperty("--r",(Math.random()*90-45)+"deg");h.style.animationDelay=(Math.random()*.12)+"s";overlay.appendChild(h)}
+  document.body.appendChild(overlay);document.querySelector(".card").classList.add("celebrate");confetti(120);burst(30);
+  if(navigator.vibrate)navigator.vibrate([30,40,70]);
+  setTimeout(()=>overlay.remove(),1600);setTimeout(()=>go(nextScreen),430);
+}
+function burst(n){
+  for(let i=0;i<n;i++){
+    const h=document.createElement("div");h.className="heart-float";h.textContent=["❤️","💕","💗","💖","✨"][Math.floor(Math.random()*5)];
+    h.style.left=Math.random()*100+"vw";h.style.bottom="-25px";h.style.fontSize=(15+Math.random()*22)+"px";h.style.setProperty("--drift",(Math.random()*160-80)+"px");h.style.animationDuration=(3+Math.random()*2)+"s";
+    document.body.appendChild(h);setTimeout(()=>h.remove(),5500);
+  }
+}
+function confetti(n){
+  for(let i=0;i<n;i++){
+    const c=document.createElement("div");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=["#ff4f87","#ffb3ca","#9d174d","#ffd166","#8bd3dd"][Math.floor(Math.random()*5)];c.style.animationDelay=(Math.random()*1.2)+"s";c.style.transform=`rotate(${Math.random()*180}deg)`;document.body.appendChild(c);setTimeout(()=>c.remove(),4800);
+  }
+}
+function sendWhatsApp(){
+  const msg=`Nidhi ❤️ I said YES to our date proposal!\\n\\nOur plan: ${state.plan}\\nDate: ${new Date(state.date+"T00:00:00").toLocaleDateString(undefined,{day:"numeric",month:"long",year:"numeric"})}\\nTime: ${formatTime(state.time)}\\nGift: ${state.gift}${state.note?"\\nMy request: "+state.note:""}\\n\\nOkay Aman, it's officially a date. 🥰❤️`;
+  window.location.href="https://wa.me/919692599153?text="+encodeURIComponent(msg);
+}
+function sendEmail(){
+  // Replace this placeholder with Aman’s email address if you want email delivery.
+  const recipient = "amansarraff@gmail.com";
+  if(recipient==="YOUR_EMAIL_HERE"){
+    alert("Your email app is not configured on this computer. You can use the WhatsApp option instead.");
+    return;
+  }
+  const subject="Nidhi said YES ❤️ — Our Date Plan";
+  const body=`Nidhi's date response ❤️
+
+Plan: ${state.plan}
+Date: ${new Date(state.date+"T00:00:00").toLocaleDateString(undefined,{day:"numeric",month:"long",year:"numeric"})}
+Time: ${formatTime(state.time)}
+Gift: ${state.gift}
+${state.note?"Her note: "+state.note:""}
+
+She said YES. ❤️`;
+  window.location.href="mailto:"+recipient+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+}
+
+setTimeout(()=>burst(5),700);
+</script>
+</body>
+</html>
